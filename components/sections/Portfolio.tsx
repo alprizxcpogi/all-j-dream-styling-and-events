@@ -150,7 +150,10 @@ export function Portfolio() {
       </div>
 
       <Dialog open={lightboxIndex !== null} onOpenChange={(v) => !v && closeLightbox()}>
-        <DialogContent className="max-w-5xl border-none bg-transparent p-0 shadow-none">
+        <DialogContent
+          className="max-w-5xl border-none bg-transparent p-0 shadow-none"
+          style={{ maxHeight: "none", overflow: "visible" }}
+        >
           {activeItem && (
             <div className="relative">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[20px] md:aspect-[16/10]">
