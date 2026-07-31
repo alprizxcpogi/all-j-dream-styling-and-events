@@ -73,7 +73,7 @@ export function Portfolio() {
               type="button"
               onClick={() => setFilter(cat)}
               className={cn(
-                "font-buttons rounded-full border px-5 py-2 text-xs font-medium uppercase tracking-wider transition-all",
+                "font-buttons rounded-full border px-5 py-2.5 text-xs font-medium uppercase tracking-wider transition-all",
                 filter === cat
                   ? "border-rose-gold bg-blush text-text shadow-[var(--shadow-soft)]"
                   : "border-linen text-text-muted hover:border-rose-gold/50 hover:text-rose-gold",
@@ -130,7 +130,6 @@ export function Portfolio() {
               640: { slidesPerView: 2.2 },
               1024: { slidesPerView: 3.2 },
             }}
-            className="!overflow-visible"
           >
             {portfolio.map((item) => (
               <SwiperSlide key={`slide-${item.id}`}>

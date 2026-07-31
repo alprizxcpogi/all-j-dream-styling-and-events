@@ -82,7 +82,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className={cn("shrink-0 rounded-full p-2 sm:hidden", isLightNav ? "text-text" : "text-warm-white")}
+          className={cn("shrink-0 rounded-full p-2.5 sm:hidden", isLightNav ? "text-text" : "text-warm-white")}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}
