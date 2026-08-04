@@ -1,12 +1,14 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useCallback } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/effects/MagneticButton";
 import { FloatingPetals } from "@/components/effects/FloatingPetals";
+import { TextReveal } from "@/components/effects/TextReveal";
+import { SparkleAccent } from "@/components/effects/SparkleAccent";
 import { BRAND } from "@/lib/constants";
 import { useBooking } from "@/components/booking/booking-context";
 
@@ -87,6 +89,7 @@ export function Hero() {
       </motion.div>
 
       <FloatingPetals count={10} className="pointer-events-none absolute inset-0 z-[2]" />
+      <SparkleAccent className="z-[2]" />
 
       <motion.div
         style={{ y: contentY, opacity }}
@@ -101,18 +104,15 @@ export function Hero() {
           {BRAND.tagline}
         </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="hero-text-shadow font-heading text-5xl leading-[1.05] text-warm-white drop-shadow-lg md:text-7xl lg:text-8xl"
-        >
-          Creating Dream Weddings
+        <h1 className="hero-text-shadow font-heading text-5xl leading-[1.05] text-warm-white drop-shadow-lg md:text-7xl lg:text-8xl">
+          <TextReveal text="Creating Dream Weddings" delay={0.4} />
           <br />
-          <span className="italic text-blush-light">
-            Filled with Love &amp; Elegance
-          </span>
-        </motion.h1>
+          <TextReveal
+            text="Filled with Love & Elegance"
+            delay={0.9}
+            className="italic text-blush-light"
+          />
+        </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}

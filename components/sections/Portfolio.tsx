@@ -90,7 +90,7 @@ export function Portfolio() {
           className="mb-14 grid auto-rows-[200px] grid-cols-2 gap-3 md:auto-rows-[240px] md:grid-cols-4 md:gap-4"
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((item) => (
+            {filtered.map((item, i) => (
               <motion.button
                 key={item.id}
                 layout
@@ -105,13 +105,25 @@ export function Portfolio() {
                   item.span,
                 )}
               >
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <motion.div
+                  initial={{ clipPath: "inset(0 0 100% 0)" }}
+                  whileInView={{ clipPath: "inset(0 0 0% 0)" }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{
+                    duration: 0.9,
+                    delay: (i % 4) * 0.1,
+                    ease: [0.65, 0, 0.35, 1],
+                  }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </motion.div>
                 <div className="absolute inset-0 flex items-center justify-center bg-text/0 transition-all duration-300 group-hover:bg-text/30">
                   <Expand className="h-6 w-6 text-warm-white opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { packages, comparisonRows } from "@/lib/data/packages";
 import { useBooking } from "@/components/booking/booking-context";
+import { MagneticButton } from "@/components/effects/MagneticButton";
 
 export function Packages() {
   const { openBooking } = useBooking();
@@ -63,14 +64,16 @@ export function Packages() {
                 ))}
               </ul>
 
-              <Button
-                size="lg"
-                variant={pkg.popular ? "default" : "outline"}
-                className="mt-8 w-full"
-                onClick={() => openBooking(pkg.id)}
-              >
-                Book Now
-              </Button>
+              <MagneticButton className="mt-8" strength={0.2}>
+                <Button
+                  size="lg"
+                  variant={pkg.popular ? "default" : "outline"}
+                  className="w-full"
+                  onClick={() => openBooking(pkg.id)}
+                >
+                  Book Now
+                </Button>
+              </MagneticButton>
             </motion.div>
           ))}
         </div>

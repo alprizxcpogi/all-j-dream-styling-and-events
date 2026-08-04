@@ -65,14 +65,21 @@ export function About() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <motion.div data-reveal className="relative">
             <div className="overflow-hidden rounded-[var(--radius-card)] shadow-[var(--shadow-lift)]">
-              <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.6 }}>
-                <Image
-                  src={ABOUT_IMAGE}
-                  alt="Elegant event tablescape styled in blush and gold"
-                  width={900}
-                  height={1125}
-                  className="aspect-[4/5] w-full object-cover"
-                />
+              <motion.div
+                initial={{ clipPath: "inset(0 100% 0 0)" }}
+                whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 1, ease: [0.65, 0, 0.35, 1] }}
+              >
+                <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.6 }}>
+                  <Image
+                    src={ABOUT_IMAGE}
+                    alt="Elegant event tablescape styled in blush and gold"
+                    width={900}
+                    height={1125}
+                    className="aspect-[4/5] w-full object-cover"
+                  />
+                </motion.div>
               </motion.div>
             </div>
             <div className="absolute -bottom-6 -right-6 hidden rounded-[var(--radius-card)] border border-linen/70 bg-warm-white/90 p-6 shadow-[var(--shadow-soft)] md:block">

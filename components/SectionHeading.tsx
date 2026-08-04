@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Sparkle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { TextReveal } from "@/components/effects/TextReveal";
 
 interface SectionHeadingProps {
   subtitle?: string;
@@ -48,7 +50,7 @@ export function SectionHeading({
           light ? "text-warm-white" : "text-text",
         )}
       >
-        {title}
+        <TextReveal text={title} delay={0.1} />
       </h2>
       {description && (
         <p
@@ -62,10 +64,21 @@ export function SectionHeading({
       )}
       <div
         className={cn(
-          "mt-8 h-px w-16 bg-gradient-to-r from-transparent via-gold to-transparent",
-          align === "center" && "mx-auto",
+          "relative mt-8 flex items-center",
+          align === "center" && "mx-auto justify-center",
         )}
-      />
+      >
+        <div className="h-px w-16 bg-gradient-to-r from-transparent via-gold to-transparent" />
+        <motion.span
+          initial={{ opacity: 0, scale: 0.4 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
+          className="absolute left-1/2 -translate-x-1/2"
+        >
+          <Sparkle className="h-3 w-3 text-gold" fill="currentColor" strokeWidth={0} />
+        </motion.span>
+      </div>
     </motion.div>
   );
 }

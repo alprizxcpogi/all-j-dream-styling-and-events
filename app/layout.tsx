@@ -9,6 +9,7 @@ import { BookingDialog } from "@/components/booking/BookingDialog";
 import { IntroLoader } from "@/components/intro/IntroLoader";
 import { ScrollProgress } from "@/components/effects/ScrollProgress";
 import { FloatingContactButtons } from "@/components/effects/FloatingContactButtons";
+import { CustomCursor } from "@/components/effects/CustomCursor";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
@@ -92,6 +93,7 @@ export default function RootLayout({
         <StructuredData />
         <BookingProvider>
           <SmoothScrollProvider>
+            <CustomCursor />
             <IntroLoader />
             <ScrollProgress />
             {children}
